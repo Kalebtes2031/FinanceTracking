@@ -1,0 +1,1 @@
+mongodb+srv://kalebtesfaye2031:UJiKotJNnsKxeVtB@financetracker.iw4ci.mongodb.net/
