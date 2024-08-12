@@ -15,9 +15,13 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
+    "@types/cors": "^2.8.17",
+    "@types/react-table": "^7.7.20",
+    "cors": "^2.8.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^6.26.0",
+    "react-table": "^7.8.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

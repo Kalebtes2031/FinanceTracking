@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
+import { useFinancialRecords } from "../../context/financial-record-context";
+import { TextField, MenuItem, Button, Box, Container, Typography, Card, CardContent } from '@mui/material';
 
 export const FinancialRecordForm = () => {
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [paymentMethod, setPaymentMethod] = useState<string>("");
-
+  const { addRecord } = useFinancialRecords();
   const { user } = useUser();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +23,7 @@ export const FinancialRecordForm = () => {
       paymentMethod: paymentMethod,
     };
 
+    addRecord(newRecord);
     setDescription("");
     setAmount("");
     setCategory("");
@@ -28,63 +31,101 @@ export const FinancialRecordForm = () => {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <div className="form-field">
-          <label>Description:</label>
-          <input
-            type="text"
-            required
-            className="input"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="form-field">
-          <label>Amount:</label>
-          <input
-            type="number"
-            required
-            className="input"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
-        <div className="form-field">
-          <label>Category:</label>
-          <select
-            required
-            className="input"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+    <Container
+      sx={{
+        mt: 5,
+        mb: 5,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <Card
+        sx={{
+          maxWidth: 600,
+          width: '100%',
+          background: 'linear-gradient(135deg, #e3f2fd, #bbdefb)',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+          borderRadius: '15px',
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2"
+            gutterBottom
+            align="center"
+            sx={{
+              fontFamily: 'Roboto, sans-serif',
+              fontWeight: 700,
+              color: '#0d47a1',
+            }}
           >
-            <option value="">Select a Category</option>
-            <option value="Food">Food</option>
-            <option value="Rent">Rent</option>
-            <option value="Salary">Salary</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div className="form-field">
-          <label>Payment Method:</label>
-          <select
-            required
-            className="input"
-            value={paymentMethod}
-            onChange={(e) => setPaymentMethod(e.target.value)}
+            Add Financial Record
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
           >
-            <option value="">Select a Payment Method</option>
-            <option value="Credit Card">Credit Card</option>
-            <option value="Cash">Cash</option>
-            <option value="Bank Transfer">Bank Transfer</option>
-          </select>
-        </div>
-        <button type="submit" className="button">
-          Add Record
-        </button>
-      </form>
-    </div>
+            <TextField
+              label="Description"
+              variant="outlined"
+              required
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              fullWidth
+            />
+            <TextField
+              label="Amount"
+              type="number"
+              variant="outlined"
+              required
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              fullWidth
+            />
+            <TextField
+              label="Category"
+              select
+              variant="outlined"
+              required
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              fullWidth
+            >
+              <MenuItem value="">Select a Category</MenuItem>
+              <MenuItem value="Food">Food</MenuItem>
+              <MenuItem value="Rent">Rent</MenuItem>
+              <MenuItem value="Salary">Salary</MenuItem>
+              <MenuItem value="Utilities">Utilities</MenuItem>
+              <MenuItem value="Entertainment">Entertainment</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+            </TextField>
+            <TextField
+              label="Payment Method"
+              select
+              variant="outlined"
+              required
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              fullWidth
+            >
+              <MenuItem value="">Select a Payment Method</MenuItem>
+              <MenuItem value="Credit Card">Credit Card</MenuItem>
+              <MenuItem value="Cash">Cash</MenuItem>
+              <MenuItem value="Bank Transfer">Bank Transfer</MenuItem>
+            </TextField>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ mt: 2 }}
+            >
+              Add Record
+            </Button>
+          </Box>
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
