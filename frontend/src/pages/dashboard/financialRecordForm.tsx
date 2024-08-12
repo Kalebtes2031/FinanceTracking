@@ -44,8 +44,9 @@ export const FinancialRecordForm = () => {
           maxWidth: 600,
           width: '100%',
           background: 'linear-gradient(135deg, #e3f2fd, #bbdefb)',
-          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3)', // Enhanced shadow
           borderRadius: '15px',
+          padding: 3,
         }}
       >
         <CardContent>
@@ -58,6 +59,7 @@ export const FinancialRecordForm = () => {
               fontFamily: 'Roboto, sans-serif',
               fontWeight: 700,
               color: '#0d47a1',
+              mb: 3,
             }}
           >
             Add Financial Record
@@ -74,6 +76,14 @@ export const FinancialRecordForm = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               fullWidth
+              sx={{
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Karla, sans-serif',
+                  fontSize: '0.875rem',
+                  color: '#757575',
+                },
+              }}
+              placeholder="Enter a brief description..."
             />
             <TextField
               label="Amount"
@@ -83,6 +93,14 @@ export const FinancialRecordForm = () => {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               fullWidth
+              sx={{
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Karla, sans-serif',
+                  fontSize: '0.875rem',
+                  color: '#757575',
+                },
+              }}
+              placeholder="Enter amount..."
             />
             <TextField
               label="Category"
@@ -92,6 +110,14 @@ export const FinancialRecordForm = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               fullWidth
+              sx={{
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Karla, sans-serif',
+                  fontSize: '0.875rem',
+                  color: '#757575',
+                },
+              }}
+              placeholder="Select a Category"
             >
               <MenuItem value="">Select a Category</MenuItem>
               <MenuItem value="Food">Food</MenuItem>
@@ -109,6 +135,14 @@ export const FinancialRecordForm = () => {
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               fullWidth
+              sx={{
+                '& .MuiInputBase-input::placeholder': {
+                  fontFamily: 'Karla, sans-serif',
+                  fontSize: '0.875rem',
+                  color: '#757575',
+                },
+              }}
+              placeholder="Select a Payment Method"
             >
               <MenuItem value="">Select a Payment Method</MenuItem>
               <MenuItem value="Credit Card">Credit Card</MenuItem>
@@ -119,7 +153,19 @@ export const FinancialRecordForm = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 2 }}
+              sx={{
+                mt: 2,
+                fontSize: '1rem',
+                fontFamily: 'Roboto, sans-serif',
+                fontWeight: 600,
+                borderRadius: '8px',
+                textTransform: 'capitalize',
+                background: 'linear-gradient(135deg, #0d47a1, #1976d2)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #0b3d91, #1565c0)',
+                },
+              }}
             >
               Add Record
             </Button>

@@ -1,4 +1,3 @@
-// import React from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { Container, Typography, Box, Card, CardContent } from "@mui/material";
 import { FinancialRecordForm } from "./financialRecordForm";
@@ -6,25 +5,26 @@ import { FinancialRecordList } from "./financialRecordList";
 
 export const Dashboard = () => {
   const { user } = useUser();
-
+console.log("how are you: ", user)
   return (
     <Container
       sx={{
         display: "flex",
         flexDirection: "column",
-        minHeight: "97vh", // Ensures the container fills the viewport height
-        padding: 0, // Removes default padding
-        margin: 0, // Removes default margin
+        minHeight: "100vh", // Full viewport height
+        padding: 3, // Adjust padding
+        marginTop: "34px", // Adjust margin-top to offset Navbar height
       }}
     >
       <Card
         sx={{
-          flex: 1, // Makes the card fill available space in the container
           background: "linear-gradient(135deg, #f3e5f5, #e1bee7)",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           borderRadius: "15px",
+          padding: 3,
           display: "flex",
           flexDirection: "column",
+          flex: 1,
         }}
       >
         <CardContent sx={{ flex: 1 }}>
