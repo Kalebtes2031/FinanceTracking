@@ -7,7 +7,7 @@ export const Navbar = () => {
     <AppBar position="static" sx={{ top: 0, left: 0, right: 0, backgroundColor: "#6a1b9a", boxShadow: "none" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography variant="h6" component="div">
-          <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>Dashboard</Link>
+          <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>Finance Tracking App</Link>
         </Typography>
         <SignedIn>
           <UserButton />

@@ -3,17 +3,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/dashboard";
 import { Auth } from "./pages/auth";
 import { FinancialRecordsProvider } from "./context/financial-record-context";
-import { Navbar } from "./components/navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { Main } from "./layout/Main";
 
 function App() {
   return (
     <Router>
-      <div id="na">
-        <Navbar />
-        <Routes>
+      <Routes>
+        {/* The main layout */}
+        <Route path="/" element={<Main />}>
+          {/* Non-protected route */}
+          <Route path="/auth" element={<Auth />} />
+          
+          {/* Protected route */}
           <Route
-            path="/"
+            index
             element={
               <ProtectedRoute>
                 <FinancialRecordsProvider>
@@ -22,9 +26,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/auth" element={<Auth />} />
-        </Routes>
-      </div>
+        </Route>
+      </Routes>
     </Router>
   );
 }
